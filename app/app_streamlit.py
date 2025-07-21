@@ -1,17 +1,21 @@
 import streamlit as st
-from PIL import Image
 from ultralytics import YOLO
+from PIL import Image
+import os
+import requests
 
-model = YOLO("/content/drive/MyDrive/Datasets/yolo_runs/yolov8_gc10_best.pt")
+# --- Download model from GitHub if not present ---
+@st.cache_resource
+def download_and_load_model():
+    model_path = "yolov8_gc10_best.pt"
+    github_url = "https://raw.githubusercontent.com/hassang66/Computer-Vision-Capstone-Project/main/models/yolov8_gc10_best.pt"
 
-st.title("Metal Defect Detector")
-uploaded = st.file_uploader("Upload an image", type=["jpg","png"])
-if uploaded:
-    img = Image.open(uploaded)
-    results = model.predict(source=img)  # or model(img)
-    # Display image with bounding boxes
-    st.image(results[0].plot(), caption="Detected defects")
-    # List classes detected
-    for obj in results[0]:
-        st.write(f"{obj.name}: {obj.confidence:.2f}")
+    if not os.path.exists(model_path):
+        with st.spinner("Downloading model..."):
+            r = requests.get(github_url)
+            with open(model_path, 'wb') as f:
+                f.write(r.content)
 
+    return YOLO(model_path)
+
+model = download_and_load_model()
