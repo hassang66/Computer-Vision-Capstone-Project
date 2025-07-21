@@ -8,7 +8,7 @@ from ultralytics import YOLO
 MODEL_URL = "https://raw.githubusercontent.com/hassang66/Computer-Vision-Capstone-Project/main/models/yolov8_gc10_best.pt"
 MODEL_PATH = "yolov8_gc10_best.pt"
 
-# --- Download the model if not present ---
+
 @st.cache_resource
 def load_model():
     if not os.path.exists(MODEL_PATH):
@@ -31,13 +31,13 @@ uploaded_file = st.file_uploader("📤 Upload an image", type=["jpg", "jpeg", "p
 
 if uploaded_file:
     img = Image.open(uploaded_file).convert("RGB")
-    st.image(img, caption="📷 Uploaded Image", use_column_width=True)
+    st.image(img, caption="📷 Uploaded Image", use_container_width=True)
 
     with st.spinner("🔍 Analyzing the image..."):
         results = model.predict(img, conf=0.25)
 
     # Plot result image
-    st.image(results[0].plot(), caption="🔎 Detected Defects", use_column_width=True)
+    st.image(results[0].plot(), caption="🔎 Detected Defects", use_container_width=True)
 
     # --- Display Results ---
     st.subheader("🧠 Prediction Results")
