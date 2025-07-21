@@ -1,0 +1,1 @@
+This folder contains google colab notebooks used for the training model
