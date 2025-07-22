@@ -14,13 +14,20 @@ This project leverages a YOLOv8 object detection model to identify **metal surfa
 
 Upload your image and let the model tell you what defect it sees!
 
+https://computer-vision-capstone-project-bbbwvzhajvvif7gbkzdhk2.streamlit.app/
 ---
 
-Let me know if you'd like to include:
 
-* A usage guide
-* Dataset citation
-* Sample prediction screenshot
-* mAP/performance metrics summary
+### 📚 Dataset Citation
 
-I can add those sections next.
+This project uses the **GC10 (Grayscale Casting Surface Defect Dataset)**, originally introduced for defect detection on metal surfaces in industrial settings.
+
+> Wang, D., Zhang, X., Yang, J., & Liu, X. (2020).
+> **"A New Dataset and a Baseline for Surface Defect Detection in Industry Metal Casting."**
+> *IEEE Transactions on Instrumentation and Measurement*, 70, 1-10.
+> DOI: [10.1109/TIM.2020.3013472](https://doi.org/10.1109/TIM.2020.3013472)
+
+📥 Dataset source: [https://github.com/GC10-dataset/GC10-dataset](https://github.com/GC10-dataset/GC10-dataset)
+
+---
+
